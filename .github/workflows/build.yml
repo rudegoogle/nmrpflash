@@ -49,8 +49,8 @@ jobs:
       if: runner.os == 'Windows'
       shell: msys2 {0}
       run: |
-        curl -LO https://npcap.com/dist/npcap-sdk-1.13.zip
-        unzip -q npcap-sdk-1.13.zip -d Npcap
+        curl -LO https://npcap.com/dist/npcap-sdk-1.16.zip
+        unzip -q npcap-sdk-1.16.zip -d Npcap
 
     - name: Build (Linux/macOS)
       if: runner.os != 'Windows'
