@@ -5,14 +5,23 @@ on:
   #  branches: [ "master", "main" ]
   #pull_request:
   #  branches: [ "master", "main" ]
-  workflow_dispatch: # This adds the manual trigger
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            artifact_name: nmrpflash-linux
+            binary_name: nmrpflash
+          - os: macos-latest
+            artifact_name: nmrpflash-macos
+            binary_name: nmrpflash
+          - os: windows-latest
+            artifact_name: nmrpflash-windows
+            binary_name: nmrpflash.exe
 
     steps:
     - name: Checkout repository
@@ -53,3 +62,10 @@ jobs:
       env:
         MINGW: x86_64-w64-mingw32-
       run: make
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.artifact_name }}
+        path: ${{ matrix.binary_name }}
+        retention-days: 30
