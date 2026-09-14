@@ -61,7 +61,7 @@ jobs:
       shell: msys2 {0}
       env:
         MINGW: x86_64-w64-mingw32-
-      run: make
+      run: make WINDRES=windres
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
