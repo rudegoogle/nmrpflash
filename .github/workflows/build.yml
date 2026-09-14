@@ -43,7 +43,7 @@ jobs:
       with:
         msystem: MINGW64
         update: true
-        install: mingw-w64-x86_64-gcc mingw-w64-x86_64-binutils mingw-w64-x86_64-imagemagick make unzip curl git
+        install: mingw-w64-x86_64-gcc mingw-w64-x86_64-binutils mingw-w64-x86_64-imagemagick mingw-w64-x86_64-librsvg make unzip curl git
 
     - name: Install Npcap SDK (Windows)
       if: runner.os == 'Windows'
